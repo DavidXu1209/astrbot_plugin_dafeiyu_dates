@@ -1,0 +1,62 @@
+{
+  "owner_qq": {
+    "description": "主人 QQ 号",
+    "type": "string",
+    "default": "",
+    "hint": "只接受这个 QQ 号的私聊指令，主动消息也只发给它。留空则插件不工作。"
+  },
+  "adapter_id": {
+    "description": "QQ 平台适配器实例 ID",
+    "type": "string",
+    "default": "",
+    "hint": "填 AstrBot 后台「平台适配器」里这个 aiocqhttp 实例的 ID，主动消息靠它拼出会话标识。留空则用主人最近一次私聊的会话标识兜底（主人首次私聊前无法主动发送）。"
+  },
+  "persona_id": {
+    "description": "用哪个人设写消息",
+    "type": "string",
+    "default": "",
+    "hint": "填 AstrBot 后台「人设」里的人设 ID；留空则使用插件内置的中性人设文案（不绑定具体人设）。"
+  },
+  "provider_ids": {
+    "description": "写消息用的模型（按顺序尝试）",
+    "type": "list",
+    "default": [],
+    "hint": "填 AstrBot 后台「服务提供商」里的提供商 ID，例如 deepseek/deepseek-chat。当天/前一晚的提醒在全部失败时会用内置文案兜底；早安在全部失败时不发送。"
+  },
+  "morning_time": {
+    "description": "当天发消息时间（北京时间 HH:MM）",
+    "type": "string",
+    "default": "09:30",
+    "hint": "到了这个时间之后才发“今天就是……”的提醒；错过会当天补发，不会隔天补。"
+  },
+  "eve_time": {
+    "description": "考试类前一晚提醒时间（北京时间 HH:MM）",
+    "type": "string",
+    "default": "21:30",
+    "hint": "只对标题里含考试、面试、比赛、答辩、手术、体检、出发、航班、报到、演出、上台等关键词的日子生效。"
+  },
+  "time_gap_hint": {
+    "description": "告诉模型现在几点、距主人上一条消息过了多久",
+    "type": "bool",
+    "default": true,
+    "hint": "只在主人私聊的 LLM 请求里追加系统提示词，不额外发消息。"
+  },
+  "time_gap_minutes": {
+    "description": "间隔多少分钟以上才提示时间差",
+    "type": "int",
+    "default": 20,
+    "hint": "小于这个间隔只注入“现在几点”那一行，不注入“他刚才在做什么”的推断提示。"
+  },
+  "morning_greeting": {
+    "description": "早上主人还没出现时主动道早安",
+    "type": "bool",
+    "default": true,
+    "hint": "每天最多一次；当天本来就有记着的日子要提醒时不再单独道早安。"
+  },
+  "morning_window": {
+    "description": "早安时间范围（北京时间，每天在其中随机一个时刻）",
+    "type": "string",
+    "default": "09:20-10:20",
+    "hint": "格式 HH:MM-HH:MM。同一日期的时间点固定，重启也不会变；只在主人当天 05:00 后还没发过消息时才发。"
+  }
+}

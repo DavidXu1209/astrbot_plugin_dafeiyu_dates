@@ -1,0 +1,16 @@
+name: astrbot_plugin_dafeiyu_dates
+display_name: 记日子
+desc: |
+  主人私聊用 /记日子 记下生日、考试、纪念日，到当天（考试、面试等还有前一晚）机器人主动私聊提醒。
+  同时把当前时间和“距主人上一条消息过了多久”注入系统提示词，并在早上主人还没出现时主动道早安。
+  只对配置的主人 QQ 生效；主动消息依赖 AstrBot 中已配置的模型提供商。
+version: 0.3.0
+author: David Xu
+repo: https://github.com/DavidXu1209/astrbot_plugin_dafeiyu_dates
+astrbot_version: ">=4.16.0"
+support_platforms:
+  - aiocqhttp
+tags:
+  - 提醒
+  - 日程
+  - 早安
